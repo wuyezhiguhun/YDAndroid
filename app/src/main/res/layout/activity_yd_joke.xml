@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/yd_header"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:minHeight="44dp"
+                android:background="@color/colorGray"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/navigation_title"
+                    android:layout_marginTop="6dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="笑话大全"
+                    android:layout_centerInParent="true"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="24dp" />
+
+            </android.support.v7.widget.Toolbar>
+
+            <Button
+                android:id="@+id/navigation_back"
+                android:layout_marginTop="6dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/base_back_32"
+                android:clickable="true"
+                android:onClick="buttonTouch"
+                app:layout_constraintTop_toTopOf="@+id/yd_header"
+                app:layout_constraintLeft_toLeftOf="@+id/yd_header"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/joke_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+    </LinearLayout>
+
+</layout>
