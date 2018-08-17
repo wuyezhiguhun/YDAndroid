@@ -1,6 +1,8 @@
 package com.weixin.wuyezhiguhun.ydandroid.ydjoke.viewmodel
 
 import com.weixin.wuyezhiguhun.ydandroid.ydjoke.data.YDJokeInfo
+import okhttp3.*
+import java.io.IOException
 import java.util.*
 
 class YDJokeViewModel {
@@ -33,7 +35,33 @@ class YDJokeViewModel {
     }
 
     //网络请求数据
-    fun setJokeData(pageIndex: Int,pageSize: Int) {
+    fun setJokeXiaohuaData(pageIndex: Int,pageSize: Int) {
+        val host: String = "http://jisuxhdq.market.alicloudapi.com"
+        val path: String = "/xiaohua/text"
+        val querys: String = "?pagenum=" + pageIndex.toString() + "&pagesize=" + pageSize.toString() + "&sort=rand"
+        val url: String = host + path + querys
+        println("wuyezhiguhun: " + url)
+        val httpClient: OkHttpClient = OkHttpClient()
+        val request: Request = Request.Builder().url(url).get().addHeader("Authorization", "APPCODE 9b2dd63024474f79b69a8aab70c8d658").build()
+        val call: Call = httpClient.newCall(request)
+        call.enqueue( object : Callback{
+            override fun onFailure(call: Call?, e: IOException?) {
+                println("wuyezhiguhun: " + "网络请求失败！")
+        //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onResponse(call: Call?, response: Response?) {
+                println("wuyezhiguhun: " + "网络请求成功！")
+                println(response)
+
+                val bodyString = response?.body()?.string()
+
+                println(bodyString)
+
+        //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+        })
 
     }
 

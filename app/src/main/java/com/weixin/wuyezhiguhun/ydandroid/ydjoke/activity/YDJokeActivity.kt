@@ -15,7 +15,8 @@ import com.weixin.wuyezhiguhun.ydandroid.databinding.ActivityYdJokeBinding
 
 class YDJokeActivity : AppCompatActivity() {
 
-    val dataArray: ArrayList<YDJokeInfo> = YDJokeViewModel().dataList
+    val jokeViewModel: YDJokeViewModel = YDJokeViewModel()
+    val dataArray: ArrayList<YDJokeInfo> = jokeViewModel.dataList
     val  mAdapter by lazy {
         YDJokeAdapter(this, R.layout.item_yd_joke, dataArray)
     }
@@ -30,6 +31,7 @@ class YDJokeActivity : AppCompatActivity() {
                 layoutManager = LinearLayoutManager(this@YDJokeActivity)
             }
         }
+        jokeViewModel.setJokeXiaohuaData(1, 20)
 
     }
 
