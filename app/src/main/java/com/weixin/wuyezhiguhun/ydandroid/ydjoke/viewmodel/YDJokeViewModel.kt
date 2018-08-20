@@ -2,12 +2,39 @@ package com.weixin.wuyezhiguhun.ydandroid.ydjoke.viewmodel
 
 import com.weixin.wuyezhiguhun.ydandroid.ydjoke.data.YDJokeInfo
 import okhttp3.*
+import org.json.JSONObject
 import java.io.IOException
 import java.util.*
 
+
 class YDJokeViewModel {
 
-    val dataList: ArrayList<YDJokeInfo> = ArrayList()
+    var dataList: ArrayList<YDJokeInfo> = ArrayList()
+
+//    var viewModelBack: YDViewModelBack? = null
+
+//    lateinit var mListen:() -> Unit
+
+    interface YDJokeViewModelBack {
+        fun networkingSuccess()
+        fun networkingFailure()
+    }
+
+
+    lateinit var mListen: YDJokeViewModelBack
+
+    fun setListeren(viewModelBack: YDJokeViewModelBack) {
+        this.mListen = viewModelBack
+//        this.mListen()
+    }
+
+//    override fun networkingFailure() {
+//
+//    }
+//
+//    override fun networkingSuccess() {
+//
+//    }
 
     init {
         addDataList()
@@ -46,19 +73,33 @@ class YDJokeViewModel {
         val call: Call = httpClient.newCall(request)
         call.enqueue( object : Callback{
             override fun onFailure(call: Call?, e: IOException?) {
+//                runOnUiThread {  }
+                mListen.networkingFailure()
                 println("wuyezhiguhun: " + "网络请求失败！")
-        //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onResponse(call: Call?, response: Response?) {
-                println("wuyezhiguhun: " + "网络请求成功！")
-                println(response)
+
 
                 val bodyString = response?.body()?.string()
 
-                println(bodyString)
+                val jsonObject = JSONObject(bodyString)
+                val dataObject = jsonObject.getJSONObject("result")
+                val dataArray = dataObject.getJSONArray("list")
+//                val jokeList: ArrayList<YDJokeInfo> = ArrayList()
+                dataList.clear()
+                for (num in 0..dataArray.length() - 1) {
+                    val jokeJson = dataArray.getJSONObject(num)
+                    val homeInfo: YDJokeInfo = YDJokeInfo()
+                    homeInfo.content = jokeJson.getString("content")
+                    homeInfo.addtime = jokeJson.getString("addtime")
+                    val number: Int = Random().nextInt(13) + 1
+                    homeInfo.image_name = "anime_" + number.toString()
+                    dataList.add(homeInfo)
+                }
+//                dataList = jokeList
+                mListen.networkingSuccess()
 
-        //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
         })

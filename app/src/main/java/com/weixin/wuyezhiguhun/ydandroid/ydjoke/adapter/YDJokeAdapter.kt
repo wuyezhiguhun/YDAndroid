@@ -23,6 +23,8 @@ class YDJokeAdapter(val mContext: Activity, val layoutRes: Int, var dataList: Li
         return dataList.size
     }
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): YDJokeAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_yd_joke, parent, false)
         return ViewHolder(view)
@@ -79,6 +81,8 @@ class YDJokeAdapter(val mContext: Activity, val layoutRes: Int, var dataList: Li
             //            onItemClickListener.onItemClick(v, position, data);
         }
     }
+
+
 
 
     interface OnItemClickListener {
