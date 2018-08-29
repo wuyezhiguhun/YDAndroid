@@ -9,12 +9,17 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.example.rowena.ydkotlinpractice"
+        applicationId "com.weixin.wuyezhiguhun.ydandroid"
         minSdkVersion 15
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'x86'
+        }
     }
     buildTypes {
         release {
@@ -38,4 +43,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+
+    compile 'com.aliyun.ams:alicloud-android-push:3.1.2@aar'
+    compile 'com.aliyun.ams:alicloud-android-utils:1.1.1'
+    compile 'com.aliyun.ams:alicloud-android-beacon:1.0.1'
+    // 或
+//    compile 'com.aliyun.ams:alicloud-android-push:3.1.2'
 }
