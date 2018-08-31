@@ -1,14 +1,13 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
 
 
 android {
     compileSdkVersion 27
     defaultConfig {
+//        applicationId "com.sgcc.property"
         applicationId "com.weixin.wuyezhiguhun.ydandroid"
         minSdkVersion 15
         targetSdkVersion 27
@@ -45,9 +44,56 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
 
-    compile 'com.aliyun.ams:alicloud-android-push:3.1.2@aar'
-    compile 'com.aliyun.ams:alicloud-android-utils:1.1.1'
-    compile 'com.aliyun.ams:alicloud-android-beacon:1.0.1'
+    api 'com.aliyun.ams:alicloud-android-push:3.1.4@aar'
+    api 'com.aliyun.ams:alicloud-android-utils:1.1.3'
+    api 'com.aliyun.ams:alicloud-android-beacon:1.0.1'
     // 或
 //    compile 'com.aliyun.ams:alicloud-android-push:3.1.2'
+
+
+//    releaseImplementation('com.mapzen:on-the-road:0.8.1') {
+//        exclude module: 'commons-io'
+//    }
+//    api files('libs/print_lib_0.15.jar')
+//    api files('libs/bolts-tasks-1.4.0.jar')
+//    api files('libs/async_task.jar')
+//    api files('libs/gprinter-2.1.3.jar')
+//    //1.5   com.speedata:deivice:+
+//    api 'com.speedata:deivice:1.5'
+//    api 'com.speedata:libuhf:6.9.5'
+//    api 'com.speedata:r6lib:1.7'
+
+//    implementation 'com.squareup.okhttp3:okhttp:3.8.0'
+//    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+//    implementation 'com.bugtags.library:bugtags-lib:latest.integration'
+
+//    implementation 'com.github.bumptech.glide:glide:3.7.0'
+//    implementation 'com.google.code.gson:gson:2.6.2'
+
+//    implementation 'com.github.nanchen2251:CompressHelper:1.0.5'
+
+//    implementation 'com.nineoldandroids:library:2.4.0'
+
+
+//    implementation 'com.github.florent37:viewanimator:1.0.0@aar'
+
+
+//    implementation 'com.github.addappcn:android-pickers:1.0.1'
+
+
+//    implementation 'com.getbase:floatingactionbutton:1.10.1'
+
+//    implementation 'com.flipboard:bottomsheet-core:1.5.1'
+
+
+//
+//    debugImplementation 'com.apkfuns.logutils:library:1.5.1.1'
+//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5'
+//    releaseImplementation 'com.apkfuns.logutils:logutils-no-op:1.5.1.1'
+//    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+
+//    kapt "com.alibaba:arouter-compiler:1.2.1"
+//    annotationProcessor "com.alibaba:arouter-compiler:1.3.1"
+
+
 }
